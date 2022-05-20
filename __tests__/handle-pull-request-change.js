@@ -49,7 +49,7 @@ describe('handlePullRequestChange', () => {
         .post('/repos/sally/project-x/statuses/abcdefg', expectedBody)
         .reply(200)
         .get('/repos/sally/project-x/contents/.github/semantic.yml')
-        .reply(200, getConfigResponse(`enabled: false`))
+        .reply(200, getConfigResponse('enabled: false'))
 
       await handlePullRequestChange(context)
       expect(mock.isDone()).toBe(true)
@@ -427,7 +427,7 @@ describe('handlePullRequestChange', () => {
         const expectedBody = {
           state: 'failure',
           target_url: 'https://github.com/probot/semantic-pull-requests',
-          description: description,
+          description,
           context: 'Semantic Pull Request'
         }
 
@@ -454,7 +454,7 @@ describe('handlePullRequestChange', () => {
         const expectedBody = {
           state: 'success',
           target_url: 'https://github.com/probot/semantic-pull-requests',
-          description: description,
+          description,
           context: 'Semantic Pull Request'
         }
 
@@ -481,7 +481,7 @@ describe('handlePullRequestChange', () => {
         const expectedBody = {
           state: 'success',
           target_url: 'https://github.com/probot/semantic-pull-requests',
-          description: description,
+          description,
           context: 'Semantic Pull Request'
         }
 
@@ -739,7 +739,7 @@ function buildContext (overrides) {
     log: () => { /* no-op */ },
 
     // an instantiated GitHub client like the one probot provides
-    github: github,
+    github,
 
     // context.repo() is a probot convenience function
     repo: (obj = {}) => {
