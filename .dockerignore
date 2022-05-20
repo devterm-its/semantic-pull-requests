@@ -1,0 +1,8 @@
+__tests__/
+.github/
+scripts/
+node_modules/
+.env.example
+.gitignore
+.nvmrc
+*.md
