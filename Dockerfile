@@ -10,7 +10,7 @@ WORKDIR /usr/app
 COPY --from=installer /usr/app/package.json ./
 COPY --from=installer /usr/app/yarn.lock ./
 COPY --from=installer /usr/app/node_modules ./node_modules
-COPY lib ./
+COPY lib ./lib
 COPY index.js ./
 USER node
 CMD [ "yarn", "start" ]
